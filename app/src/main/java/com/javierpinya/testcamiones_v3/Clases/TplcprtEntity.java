@@ -11,14 +11,7 @@ import com.javierpinya.testcamiones_v3.Constants.Constants;
 import static androidx.room.ForeignKey.CASCADE;
 
 @Entity(tableName = Constants.NAME_TABLE_TPLCPRT,
-        foreignKeys = {
-                @ForeignKey(entity = TacsecoEntity.class,
-                parentColumns = "id",
-                childColumns = "cisternaId",
-                onDelete = CASCADE)
-        },
-        indices = {@Index(value = {"id"}, unique = true),
-                @Index(value = {"cisternaId"}, unique = true)}
+        indices = {@Index(value = {"id"}, unique = true)}
 )
 public class TplcprtEntity {
 
@@ -26,14 +19,14 @@ public class TplcprtEntity {
     public int id;
     public int cod_compartimento;
     public String id_tipo_componente;
-    public int cisternaId;
+    public String matricula;
     public int can_capacidad;
     public String cod_tag_cprt;
 
-    public TplcprtEntity(int cod_compartimento, String id_tipo_componente, int cisternaId, int can_capacidad, String cod_tag_cprt) {
+    public TplcprtEntity(int cod_compartimento, String id_tipo_componente, String matricula, int can_capacidad, String cod_tag_cprt) {
         this.cod_compartimento = cod_compartimento;
         this.id_tipo_componente = id_tipo_componente;
-        this.cisternaId = cisternaId;
+        this.matricula = matricula;
         this.can_capacidad = can_capacidad;
         this.cod_tag_cprt = cod_tag_cprt;
     }
@@ -62,12 +55,12 @@ public class TplcprtEntity {
         this.id_tipo_componente = id_tipo_componente;
     }
 
-    public int getCisternaId() {
-        return cisternaId;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public void setCisternaId(int cisternaId) {
-        this.cisternaId = cisternaId;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public int getCan_capacidad() {

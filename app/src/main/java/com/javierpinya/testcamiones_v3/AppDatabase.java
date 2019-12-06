@@ -67,24 +67,23 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public static void destroyInstance(){ INSTANCE = null; }
 
-    /*
 
+/*
     static final Migration MIGRATION_1_2 = new Migration(1,2) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
 
+
+            database.execSQL("DROP TABLE " + Constants.NAME_TABLE_TPLCPRT);
             database.execSQL("CREATE TABLE " + Constants.NAME_TABLE_TPLCPRT + " (id INTEGER PRIMARY KEY NOT NULL," +
                     "cod_compartimento INTEGER DEFAULT 0, id_tipo_componente INTEGER DEFAULT 0," +
-                    "cisternaId INTEGER NOT NULL, can_capacidad INTEGER DEFAULT 0, cod_tag_cprt TEXT," +
-                    "foreign key (cisternaId) references " + Constants.NAME_TABLE_TACSECO +
-                    "(id) ON DELETE CASCADE)");
-            database.execSQL("CREATE UNIQUE INDEX index_" + Constants.NAME_TABLE_TPLCPRT + "_cisternaId ON " + Constants.NAME_TABLE_TPLCPRT + "(cisternaId)");
+                    "matricula TEXT, can_capacidad INTEGER DEFAULT 0, cod_tag_cprt TEXT)");
             database.execSQL("CREATE UNIQUE INDEX index_" + Constants.NAME_TABLE_TPLCPRT + "_id ON " + Constants.NAME_TABLE_TPLCPRT + "(id)");
 
         }
     };
 
-
+/*
     static final Migration MIGRATION_2_3 = new Migration(2,3) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
@@ -114,12 +113,12 @@ public abstract class AppDatabase extends RoomDatabase {
             database.execSQL("DROP TABLE vehiculo");
             database.execSQL("CREATE TABLE " + Constants.NAME_TABLE_TACCAMI + " (id INTEGER PRIMARY KEY NOT NULL," +
                     "cod_vehiculo INTEGER NOT NULL, tractoraId INTEGER NOT NULL," +
-                    "cisternaId INTEGER NOT NULL, tara INTEGER NOT NULL , pesoMaximo INTEGER NOT NULL," +
-                    "fec_baja INTEGER, foreign key (cisternaId) references " + Constants.NAME_TABLE_TACSECO +
+                    "matricula INTEGER NOT NULL, tara INTEGER NOT NULL , pesoMaximo INTEGER NOT NULL," +
+                    "fec_baja INTEGER, foreign key (matricula) references " + Constants.NAME_TABLE_TACSECO +
                     "(id) ON DELETE CASCADE, foreign key (tractoraId) references " + Constants.NAME_TABLE_TACPRCO +
                     "(id) ON DELETE CASCADE)");
             database.execSQL("CREATE UNIQUE INDEX index_" + Constants.NAME_TABLE_TACCAMI + "_tractoraId ON " + Constants.NAME_TABLE_TACCAMI + "(tractoraId)" );
-            database.execSQL("CREATE UNIQUE INDEX index_" + Constants.NAME_TABLE_TACCAMI + "_cisternaId ON " + Constants.NAME_TABLE_TACCAMI + "(cisternaId)" );
+            database.execSQL("CREATE UNIQUE INDEX index_" + Constants.NAME_TABLE_TACCAMI + "_cisternaId ON " + Constants.NAME_TABLE_TACCAMI + "(matricula)" );
             database.execSQL("CREATE UNIQUE INDEX index_" + Constants.NAME_TABLE_TACCAMI + "_id ON " + Constants.NAME_TABLE_TACCAMI + "(id)" );
 
             database.execSQL("CREATE TABLE " + Constants.NAME_TABLE_TACPRCO + " (id INTEGER PRIMARY KEY NOT NULL," +
@@ -153,7 +152,7 @@ public abstract class AppDatabase extends RoomDatabase {
                     "inspector TEXT," +
                     "instalacion TEXT," +
                     "tractoraId INTEGER NOT NULL," +
-                    "cisternaId INTEGER NOT NULL," +
+                    "matricula INTEGER NOT NULL," +
                     "fechaInicioInspeccion INTEGER," +
                     "albaran TEXT," +
                     "conductorId INTEGER NOT NULL," +
@@ -201,12 +200,12 @@ public abstract class AppDatabase extends RoomDatabase {
                     "isCBloqueada INTEGER NOT NULL," +
 
                     "foreign key (tractoraId) references " + Constants.NAME_TABLE_TACPRCO + "(id)," +
-                    "foreign key (cisternaId) references " + Constants.NAME_TABLE_TACSECO + "(id)," +
+                    "foreign key (matricula) references " + Constants.NAME_TABLE_TACSECO + "(id)," +
                     "foreign key (transportistaId) references " + Constants.NAME_TABLE_TACCATR + "(id)," +
                     "foreign key (conductorId) references " + Constants.NAME_TABLE_TACCOND + "(id))");
             database.execSQL("CREATE UNIQUE INDEX index_" + Constants.NAME_TABLE_INSPECCION + "_id ON " + Constants.NAME_TABLE_INSPECCION + "(id)");
             database.execSQL("CREATE UNIQUE INDEX index_" + Constants.NAME_TABLE_INSPECCION + "_tractoraId ON " + Constants.NAME_TABLE_INSPECCION + "(tractoraId)");
-            database.execSQL("CREATE UNIQUE INDEX index_" + Constants.NAME_TABLE_INSPECCION + "_cisternaId ON " + Constants.NAME_TABLE_INSPECCION + "(cisternaId)");
+            database.execSQL("CREATE UNIQUE INDEX index_" + Constants.NAME_TABLE_INSPECCION + "_cisternaId ON " + Constants.NAME_TABLE_INSPECCION + "(matricula)");
             database.execSQL("CREATE UNIQUE INDEX index_" + Constants.NAME_TABLE_INSPECCION + "_transportistaId ON " + Constants.NAME_TABLE_INSPECCION + "(transportistaId)");
             database.execSQL("CREATE UNIQUE INDEX index_" + Constants.NAME_TABLE_INSPECCION + "_conductorId ON " + Constants.NAME_TABLE_INSPECCION + "(conductorId)");
 

@@ -47,9 +47,12 @@
             android:id="@+id/ivDivider2"
             android:layout_width="match_parent"
             android:layout_height="4dp"
+            android:layout_margin="16dp"
+            android:background="@color/colorPrimaryDark"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="-16dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ivCisternaBloqueada"

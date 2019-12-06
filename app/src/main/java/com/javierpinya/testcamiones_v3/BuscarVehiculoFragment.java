@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.javierpinya.testcamiones_v3.Adapters.ListaBuscarVehiculoRecyclerViewAdapter;
+import com.javierpinya.testcamiones_v3.Adapters.VehiculosAdapter;
 import com.javierpinya.testcamiones_v3.Clases.TaccamiEntity;
 import com.javierpinya.testcamiones_v3.Clases.TaccondEntity;
 import com.javierpinya.testcamiones_v3.Clases.TacprcoEntity;
@@ -48,10 +49,11 @@ public class BuscarVehiculoFragment extends Fragment {
     final List<Integer> cod_vehiculo1 = new ArrayList<>();
     final List<Integer> cod_vehiculo2 = new ArrayList<>();
     final List<Integer> listaEquivalente = new ArrayList<>();
-    final List<Integer> tractoras = new ArrayList<>();
-    final List<Integer> cisternas = new ArrayList<>();
-    final List<Integer> bloqueadoTractoras = new ArrayList<>();
-    final List<Integer> bloqueadoCisternas = new ArrayList<>();
+    final List<String> tractoras = new ArrayList<>();
+    final List<String> cisternas = new ArrayList<>();
+
+    private List<Integer> bloqueadoTractoras = new ArrayList<>();
+    private List<Integer> bloqueadoCisternas = new ArrayList<>();
 
     private List<String> matT = new ArrayList<>();
     private List<String> matC = new ArrayList<>();
@@ -84,10 +86,23 @@ public class BuscarVehiculoFragment extends Fragment {
         lanzarViewModel();
 
         //RecyclerView
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_identificacionvehiculo);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_resultadobuscarvehiculo);
         mLayoutManager = new LinearLayoutManager(getActivity());
 
 
+        final List<Integer> bT = new ArrayList<>();
+        final List<Integer> bC = new ArrayList<>();
+
+        final List<String> mT = new ArrayList<>();
+        final List<String> mC = new ArrayList<>();
+
+        for (int i=0;i<10;i++){
+            mT.add("000"+i+"AAA");
+            mC.add("000"+i+"BBB");
+            bT.add(2);
+            bC.add(2);
+
+        }
 
 
         buscar.setOnClickListener(new View.OnClickListener(){
@@ -99,16 +114,20 @@ public class BuscarVehiculoFragment extends Fragment {
                     Toast.makeText(getActivity(), "Introduzca una matrícula", Toast.LENGTH_SHORT).show();
                 }else{
 
-                   // buscarComponentes(primer, segundo);
-                    mAdapter = new ListaBuscarVehiculoRecyclerViewAdapter(matT, matC, bloqueadoTractoras, bloqueadoCisternas, R.layout.listview_resultado_buscar_vehiculos, new ListaBuscarVehiculoRecyclerViewAdapter.OnItemClickListener(){
+                    buscarComponentes(primer.trim(), segundo.trim());
+                    /*
+                    mAdapter = new VehiculosAdapter(matT, matC, bloqueadoTractoras, bloqueadoCisternas, R.layout.listview_resultado_buscar_vehiculos, new VehiculosAdapter.OnItemClickListener(){
+
                         @Override
-                        public void onItemClick(String tractora, String cisterna, int bloqueoTractora, int bloqueoCisterna, int position) {
-                            Toast.makeText(getActivity(), "Has pulsado sobre el objecto: " + position, Toast.LENGTH_SHORT).show();
+                        public void onItemClick(String matT, String matC, int bloqueoTractora, int bloqueoCisterna, int position) {
+                            Toast.makeText(getActivity(), matT + " - " + matC + " - " + position, Toast.LENGTH_SHORT).show();
                         }
                     });
 
                     mRecyclerView.setLayoutManager(mLayoutManager);
                     mRecyclerView.setAdapter(mAdapter);
+
+                     */
                 }
             }
         });
@@ -116,7 +135,7 @@ public class BuscarVehiculoFragment extends Fragment {
         return view;
     }
 
-     /*
+
     private void buscarComponentes(String primer, String segundo) {
         cod_vehiculo1.clear();
         cod_vehiculo2.clear();
@@ -167,41 +186,51 @@ public class BuscarVehiculoFragment extends Fragment {
             taccamiViewModel.findTaccamiByCodVehiculo(listaEquivalente.get(i)).observe(getActivity(), new Observer<List<TaccamiEntity>>() {
                 @Override
                 public void onChanged(List<TaccamiEntity> taccamiEntities) {
-                    tractoras.add(taccamiEntities.get(0).getTractoraId());
-                    if (taccamiEntities.get(0) == null){
-                        cisternas.add(0);
+                    tractoras.add(taccamiEntities.get(0).getTractora());
+                    if (taccamiEntities.get(0).getCisterna() == null){
+                        cisternas.add("-");
+                    }else{
+                        cisternas.add(taccamiEntities.get(0).getCisterna());  //En el caso de los rígidos, esta consulta devolvería null.
                     }
-                    cisternas.add(taccamiEntities.get(0).getCisternaId());  //En el caso de los rígidos, esta consulta devolvería null.
                 }
             });
         }
 
         for(int i=0;i<listaEquivalente.size();i++){
 
-            if(cisternas.get(i)==0){
+            if(cisternas.get(i)=="-"){
                 bloqueadoCisternas.add(0); //nulo
                 matC.add("-");
             }else{
-                if(tacsecoViewModel.findTacsecoById(cisternas.get(i)).getInd_bloqueo()){
-                    bloqueadoCisternas.add(1); //bloqueado
-                }else{
-                    bloqueadoCisternas.add(2); //no bloqueado
+                matC.add(cisternas.get(i));
+                tacsecoViewModel.findTacsecoByMatricula(cisternas.get(i)).observe(getActivity(), new Observer<List<TacsecoEntity>>() {
+                    @Override
+                    public void onChanged(List<TacsecoEntity> tacsecoEntities) {
+                        if (tacsecoEntities.get(0).getInd_bloqueo()){
+                            bloqueadoCisternas.add(1);  //bloqueado
+                        }else{
+                            bloqueadoCisternas.add(2);  //no bloqueado
+                        }
+                    }
+                });
+            }
+            tacprcoViewModel.findTacprcoByMatricula(tractoras.get(i)).observe(getActivity(), new Observer<List<TacprcoEntity>>() {
+                @Override
+                public void onChanged(List<TacprcoEntity> tacprcoEntities) {
+                    if (tacprcoEntities.get(0).isInd_bloqueo()){
+                        bloqueadoTractoras.add(1);  //bloqueado
+                    }else{
+                        bloqueadoTractoras.add(2);
+                    }
                 }
-                matC.add(tacsecoViewModel.findTacsecoById(cisternas.get(i)).getMatricula());
-            }
-            if(tacprcoViewModel.findTacprcoById(tractoras.get(i)).isInd_bloqueo()){
-                bloqueadoTractoras.add(1);
-            }else{
-                bloqueadoTractoras.add(2);
-            }
-
-            matT.add(tacprcoViewModel.findTacprcoById(tractoras.get(i)).getMatricula());
-
+            });
+            matT.add(tractoras.get(i));
+            Toast.makeText(getActivity(), "matT: " + matT.get(0), Toast.LENGTH_SHORT).show();
         }
 
 
     }
-*/
+
     private void lanzarViewModel() {
         tacprcoViewModel = ViewModelProviders.of(getActivity()).get(TacprcoViewModel.class);
         tacsecoViewModel = ViewModelProviders.of(getActivity()).get(TacsecoViewModel.class);
