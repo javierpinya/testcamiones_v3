@@ -172,7 +172,7 @@ public class SincronizarFragment extends Fragment {
             public void onClick(View v) {
                 String cadena="";
                 List resultado = new ArrayList();
-
+/*
                 tacprcoViewModel.getAllTacprco().observe(getActivity(), new Observer<List<TacprcoEntity>>() {
                     @Override
                     public void onChanged(List<TacprcoEntity> tacprcoEntities) {
@@ -190,7 +190,7 @@ public class SincronizarFragment extends Fragment {
                         }
                     }
                 });
-
+*/
                 taccamiViewModel.findAllVehiculos().observe(getActivity(), new Observer<List<TaccamiEntity>>() {
                     @Override
                     public void onChanged(List<TaccamiEntity> taccamiEntities) {
@@ -394,7 +394,7 @@ public class SincronizarFragment extends Fragment {
                 fos.write(content.get(i).getBytes());
             }
             fos.close();
-            Toast.makeText(getActivity(), "Saved! - contentSize: " + content.size(), Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getActivity(), "Saved! - contentSize: " + content.size(), Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             Toast.makeText(getActivity(), "Not Saved! FileNotException", Toast.LENGTH_SHORT).show();
             e.printStackTrace();

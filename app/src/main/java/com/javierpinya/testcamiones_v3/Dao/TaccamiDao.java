@@ -27,13 +27,16 @@ public interface TaccamiDao {
     LiveData<List<TaccamiEntity>> findAllTaccami();
 
     @Query("select * from taccami where cod_vehiculo LIKE :cod_vehiculo")
-    LiveData<List<TaccamiEntity>> findTaccamiByCodVehiculo(int cod_vehiculo);
+    TaccamiEntity findTaccamiByCodVehiculo(int cod_vehiculo);
 
-    @Query("SELECT * FROM taccami WHERE tractora in (SELECT id FROM tacprco where matricula LIKE :matricula)")
+    @Query("SELECT * FROM taccami WHERE tractora LIKE :matricula")
     LiveData<List<TaccamiEntity>> findTaccamiByTMatricula(String matricula);
 
-    @Query("SELECT * FROM taccami WHERE cisterna in (SELECT id FROM tacseco where matricula LIKE :matricula)")
+    @Query("SELECT * FROM taccami WHERE cisterna LIKE :matricula")
     LiveData<List<TaccamiEntity>> findTaccamiByCMatricula(String matricula);
+
+    @Query("SELECT * FROM taccami WHERE tractora LIKE :tractora AND cisterna LIKE :cisterna")
+    LiveData<List<TaccamiEntity>> findTaccamiByTCMatricula(String tractora, String cisterna);
 
     @Query("DELETE FROM taccami")
     void deleteAllTaccami();
