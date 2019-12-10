@@ -22,7 +22,7 @@ public class TaccamiViewModel extends AndroidViewModel {
         allTaccami = taccamiRepository.findAllTaccami();
     }
 
-    public LiveData<List<TaccamiEntity>> findTaccamiByCodVehiculo(int cod_vehiculo){
+    public TaccamiEntity findTaccamiByCodVehiculo(int cod_vehiculo){
         return taccamiRepository.findTaccamiByCodVehiculo(cod_vehiculo);
     }
 
@@ -32,6 +32,10 @@ public class TaccamiViewModel extends AndroidViewModel {
 
     public LiveData<List<TaccamiEntity>> findTaccamiByCMatricula(String matricula){
         return taccamiRepository.findTaccamiByCMatricula(matricula);
+    }
+
+    public LiveData<List<TaccamiEntity>> findTaccamiByTCMat(String tractora, String cisterna){
+        return taccamiRepository.findTaccamiByTCMat(tractora, cisterna);
     }
 
     public LiveData<List<TaccamiEntity>> findAllVehiculos(){

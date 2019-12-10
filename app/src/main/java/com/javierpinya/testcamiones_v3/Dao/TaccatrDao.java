@@ -26,6 +26,9 @@ public interface TaccatrDao {
     @Query("DELETE FROM taccatr")
     void deleteAllTaccatr();
 
+    @Query("SELECT * FROM taccatr")
+    LiveData<List<TaccatrEntity>> findAllTaccatr();
+
     @Query("SELECT * FROM taccatr WHERE id LIKE :id")
     TaccatrEntity findTaccatrById(int id);
 

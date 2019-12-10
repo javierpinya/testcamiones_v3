@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
+    app:cardCornerRadius="8dp"
     app:cardElevation="20dp">
 
 
@@ -47,15 +48,19 @@
             android:id="@+id/ivDivider2"
             android:layout_width="match_parent"
             android:layout_height="4dp"
+            android:layout_margin="16dp"
+            android:background="@color/colorPrimaryDark"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="-16dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ivCisternaBloqueada"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_margin="8dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivDivider2"
             app:srcCompat="@drawable/ic_checked" />
@@ -79,6 +84,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_margin="8dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_ban" />
@@ -89,6 +95,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_margin="8dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/ivDivider2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ind_observaciones"
@@ -99,6 +106,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_margin="8dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivCisternaBloqueada"

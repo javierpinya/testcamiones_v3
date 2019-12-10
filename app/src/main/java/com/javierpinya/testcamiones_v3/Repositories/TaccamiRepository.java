@@ -27,7 +27,7 @@ public class TaccamiRepository {
         return taccamiDao.findAllTaccami();
     }
 
-    public LiveData<List<TaccamiEntity>> findTaccamiByCodVehiculo(int cod_vehiculo){
+    public TaccamiEntity findTaccamiByCodVehiculo(int cod_vehiculo){
         return taccamiDao.findTaccamiByCodVehiculo(cod_vehiculo);
     }
 
@@ -37,6 +37,10 @@ public class TaccamiRepository {
 
     public LiveData<List<TaccamiEntity>> findTaccamiByCMatricula(String matricula){
         return taccamiDao.findTaccamiByCMatricula(matricula);
+    }
+
+    public LiveData<List<TaccamiEntity>> findTaccamiByTCMat(String tractora, String cisterna){
+        return taccamiDao.findTaccamiByTCMatricula(tractora, cisterna);
     }
 
     public void insertTaccami(TaccamiEntity taccamiEntity){

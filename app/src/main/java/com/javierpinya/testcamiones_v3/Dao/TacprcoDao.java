@@ -26,6 +26,9 @@ public interface TacprcoDao {
     @Query("SELECT * FROM tacprco WHERE matricula LIKE :matricula")
     LiveData<List<TacprcoEntity>> findTacprcoByMatricula(String matricula);
 
+    @Query("SELECT * FROM tacprco WHERE matricula LIKE :matricula")
+    TacprcoEntity findTacprcoByOneMatricula(String matricula);
+
     @Query("SELECT * FROM tacprco")
     LiveData<List<TacprcoEntity>> getAllTacprco();
 

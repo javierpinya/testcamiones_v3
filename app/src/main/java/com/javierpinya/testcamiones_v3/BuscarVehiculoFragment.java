@@ -1,7 +1,10 @@
 package com.javierpinya.testcamiones_v3;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +19,9 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.javierpinya.testcamiones_v3.Adapters.ListaBuscarVehiculoRecyclerViewAdapter;
+import com.javierpinya.testcamiones_v3.Adapters.VehiculosAdapter;
 import com.javierpinya.testcamiones_v3.Clases.TaccamiEntity;
-import com.javierpinya.testcamiones_v3.Clases.TaccondEntity;
-import com.javierpinya.testcamiones_v3.Clases.TacprcoEntity;
-import com.javierpinya.testcamiones_v3.Clases.TacsecoEntity;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,18 +42,26 @@ public class BuscarVehiculoFragment extends Fragment {
     private TaccatrViewModel taccatrViewModel;
     private TaccondViewModel taccondViewModel;
     private TplcprtViewModel tplcprtViewModel;
-    private List<TaccamiEntity> taccamiList = new ArrayList<>();
+    private List<TaccamiEntity> taccamiList1 = new ArrayList<>();
+    private List<TaccamiEntity> taccamiList2 = new ArrayList<>();
+    private List<TaccamiEntity> taccamiList3 = new ArrayList<>();
+    private List<TaccamiEntity> taccamiList4 = new ArrayList<>();
 
-    final List<Integer> cod_vehiculo1 = new ArrayList<>();
-    final List<Integer> cod_vehiculo2 = new ArrayList<>();
-    final List<Integer> listaEquivalente = new ArrayList<>();
-    final List<Integer> tractoras = new ArrayList<>();
-    final List<Integer> cisternas = new ArrayList<>();
-    final List<Integer> bloqueadoTractoras = new ArrayList<>();
-    final List<Integer> bloqueadoCisternas = new ArrayList<>();
+    private List<Integer> cod_vehiculo1 = new ArrayList<>();
+    private List<Integer> cod_vehiculo2 = new ArrayList<>();
+    private List<Integer> listaEquivalente = new ArrayList<>();
+    private List<String> tractoras = new ArrayList<>();
+    private List<String> cisternas = new ArrayList<>();
+
+    private List<Integer> bloqueadoTractoras = new ArrayList<>();
+    private List<Integer> bloqueadoCisternas = new ArrayList<>();
 
     private List<String> matT = new ArrayList<>();
     private List<String> matC = new ArrayList<>();
+
+    private List<Integer> vehiculoT = new ArrayList<>();
+    private List<Integer> vehiculoC= new ArrayList<>();
+    private List<Integer> vehiculo = new ArrayList<>();
 
 
     private RecyclerView mRecyclerView;
@@ -81,127 +88,184 @@ public class BuscarVehiculoFragment extends Fragment {
         segundoComp = view.findViewById(R.id.etSegundoComp);
         buscar = view.findViewById(R.id.btnBuscarVehiculo);
 
+
         lanzarViewModel();
 
         //RecyclerView
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_identificacionvehiculo);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_resultadobuscarvehiculo);
         mLayoutManager = new LinearLayoutManager(getActivity());
 
 
+        final List<Integer> bT = new ArrayList<>();
+        final List<Integer> bC = new ArrayList<>();
+
+        final List<String> mT = new ArrayList<>();
+        final List<String> mC = new ArrayList<>();
+
+        for (int i=0;i<10;i++){
+            mT.add("000"+i+"AAA");
+            mC.add("000"+i+"BBB");
+            bT.add(2);
+            bC.add(2);
+
+        }
 
 
         buscar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                primer = primerComp.getText().toString();
-                segundo = segundoComp.getText().toString();
+                Handler handler = new Handler();
+                vehiculo.clear();
+                vehiculoC.clear();
+                vehiculoT.clear();
+                matT.clear();
+                matC.clear();
+                bloqueadoCisternas.clear();
+                bloqueadoTractoras.clear();
+
+                primer = primerComp.getText().toString().trim();
+                segundo = segundoComp.getText().toString().trim();
                 if (primer.isEmpty() && segundo.isEmpty()){
                     Toast.makeText(getActivity(), "Introduzca una matrícula", Toast.LENGTH_SHORT).show();
-                }else{
+                }else {
+                    /*
+                    if (!primer.isEmpty()) {
+                        buscarTractora(primer);
+                    }
+                    if (!segundo.isEmpty()) {
+                        buscarCisterna(segundo);
+                    }
 
-                   // buscarComponentes(primer, segundo);
-                    mAdapter = new ListaBuscarVehiculoRecyclerViewAdapter(matT, matC, bloqueadoTractoras, bloqueadoCisternas, R.layout.listview_resultado_buscar_vehiculos, new ListaBuscarVehiculoRecyclerViewAdapter.OnItemClickListener(){
-                        @Override
-                        public void onItemClick(String tractora, String cisterna, int bloqueoTractora, int bloqueoCisterna, int position) {
-                            Toast.makeText(getActivity(), "Has pulsado sobre el objecto: " + position, Toast.LENGTH_SHORT).show();
+                    if (taccamiList1.size() > 0) {
+                        for (int i = 0; i < taccamiList1.size(); i++) {
+                            vehiculoT.add(taccamiList1.get(i).getCod_vehiculo());
                         }
-                    });
+                    }
+                    if (taccamiList2.size() > 0) {
+                        for (int i = 0; i < taccamiList2.size(); i++) {
+                            vehiculoC.add(taccamiList2.get(i).getCod_vehiculo());
+                        }
+                    }
 
-                    mRecyclerView.setLayoutManager(mLayoutManager);
-                    mRecyclerView.setAdapter(mAdapter);
+
+
+                    if (vehiculoT.size() <= 0 && vehiculoC.size() <= 0) {
+                        Toast.makeText(getActivity(), "Sin datos sobre ese vehículo", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (vehiculoT.size() > 0){
+                            if(vehiculoC.size() > 0){
+                                vehiculo = new ArrayList<>(compararCodVehiculo(vehiculoT, vehiculoC));
+                            }else{
+                                vehiculo.addAll(vehiculoT);
+                            }
+                        }else{
+                            vehiculo.addAll(vehiculoC);
+                        }
+                        buscaConjuntos(vehiculo);
+                        for (int i = 0; i < taccamiList3.size(); i++) {
+                            matT.add(taccamiList3.get(i).getTractora());
+                            if (taccamiList3.get(i).getCisterna().isEmpty()) {
+                                matC.add("-");
+                            } else {
+                                matC.add(taccamiList3.get(i).getCisterna());
+                            }
+                            Log.d("matT", matT.get(matT.size()-1));
+                            Log.d("matC", matC.get(matC.size()-1));
+                            bloqueadoTractoras.add(1);
+                            bloqueadoCisternas.add(1);
+                        }
+                     */
+
+                    buscarTractoraCisterna(primer,segundo);
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                if(taccamiList4.size()>0) {
+                                    for (int i = 0; i < taccamiList4.size(); i++) {
+                                        matT.add(taccamiList4.get(i).getTractora());
+                                        if (taccamiList4.get(i).getCisterna().isEmpty()) {
+                                            matC.add("-");
+                                        } else {
+                                            matC.add(taccamiList4.get(i).getCisterna());
+                                        }
+                                        bloqueadoTractoras.add(1);
+                                        bloqueadoCisternas.add(1);
+                                    }
+
+
+                                    mAdapter = new VehiculosAdapter(matT, matC, bloqueadoTractoras, bloqueadoCisternas, R.layout.listview_resultado_buscar_vehiculos, new VehiculosAdapter.OnItemClickListener() {
+
+                                        @Override
+                                        public void onItemClick(String matT, String matC, int bloqueoTractora, int bloqueoCisterna, int position) {
+                                            Toast.makeText(getActivity(), matT + " - " + matC + " - " + position, Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+                                    mRecyclerView.setLayoutManager(mLayoutManager);
+                                    mRecyclerView.setAdapter(mAdapter);
+                                }else{
+                                    Toast.makeText(getActivity(), "Sin datos sobre ese vehículo", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        }, 1000);
+
+
+
+                    }
                 }
-            }
+
         });
 
         return view;
     }
 
-     /*
-    private void buscarComponentes(String primer, String segundo) {
-        cod_vehiculo1.clear();
-        cod_vehiculo2.clear();
-        listaEquivalente.clear();
-        bloqueadoCisternas.clear();
-        bloqueadoTractoras.clear();
-
-        if (primer.length()>0) {
-
-            taccamiViewModel.findTaccamiByTMatricula(primer).observe(getActivity(), new Observer<List<TaccamiEntity>>() {
-                @Override
-                public void onChanged(List<TaccamiEntity> taccamiEntities) {
-                    for (int i = 0; i < taccamiEntities.size(); i++) {
-                        cod_vehiculo1.add(taccamiEntities.get(i).getCod_vehiculo());
-                    }
-                }
-            });
-        }
-        if(segundo.length()>0){
-            taccamiViewModel.findTaccamiByCMatricula(segundo).observe(getActivity(), new Observer<List<TaccamiEntity>>() {
-                @Override
-                public void onChanged(List<TaccamiEntity> taccamiEntities) {
-                    for(int i=0;i<taccamiEntities.size();i++) {
-                        cod_vehiculo2.add(taccamiEntities.get(i).getCod_vehiculo());
-                    }
-                }
-            });
-        }
-
-        if(cod_vehiculo1.size()>0 && cod_vehiculo2.size()>0){
-            for(int i=0;i<cod_vehiculo1.size();i++){
-                for(int j=0;j<cod_vehiculo2.size();j++){
-                    if (cod_vehiculo1.get(i) == cod_vehiculo2.get(j)){
-                        listaEquivalente.add(cod_vehiculo1.get(i));
-                    }
-                }
-            }
-        }else{
-            for(int i=0;i<cod_vehiculo1.size();i++){
-                listaEquivalente.add(cod_vehiculo1.get(i));
-            }
-            for(int i=0;i<cod_vehiculo2.size();i++){
-                listaEquivalente.add(cod_vehiculo2.get(i));
-            }
-        }
-
-        for(int i=0;i<listaEquivalente.size();i++) {
-            taccamiViewModel.findTaccamiByCodVehiculo(listaEquivalente.get(i)).observe(getActivity(), new Observer<List<TaccamiEntity>>() {
-                @Override
-                public void onChanged(List<TaccamiEntity> taccamiEntities) {
-                    tractoras.add(taccamiEntities.get(0).getTractoraId());
-                    if (taccamiEntities.get(0) == null){
-                        cisternas.add(0);
-                    }
-                    cisternas.add(taccamiEntities.get(0).getCisternaId());  //En el caso de los rígidos, esta consulta devolvería null.
-                }
-            });
-        }
-
-        for(int i=0;i<listaEquivalente.size();i++){
-
-            if(cisternas.get(i)==0){
-                bloqueadoCisternas.add(0); //nulo
-                matC.add("-");
-            }else{
-                if(tacsecoViewModel.findTacsecoById(cisternas.get(i)).getInd_bloqueo()){
-                    bloqueadoCisternas.add(1); //bloqueado
-                }else{
-                    bloqueadoCisternas.add(2); //no bloqueado
-                }
-                matC.add(tacsecoViewModel.findTacsecoById(cisternas.get(i)).getMatricula());
-            }
-            if(tacprcoViewModel.findTacprcoById(tractoras.get(i)).isInd_bloqueo()){
-                bloqueadoTractoras.add(1);
-            }else{
-                bloqueadoTractoras.add(2);
-            }
-
-            matT.add(tacprcoViewModel.findTacprcoById(tractoras.get(i)).getMatricula());
-
-        }
-
-
+    private void buscarTractora(String matricula){
+        tacprcoViewModel.findTacprcoByMatricula(matricula);
     }
-*/
+
+    private void buscarCisterna(String matricula){
+
+        taccamiViewModel.findTaccamiByCMatricula("%" + matricula + "%").observe(getActivity(), new Observer<List<TaccamiEntity>>() {
+            @Override
+            public void onChanged(List<TaccamiEntity> taccamiEntities) {
+                taccamiList2 = taccamiEntities;
+            }
+        });
+    }
+
+    private void buscarTractoraCisterna(String tractora, String cisterna){
+
+
+
+        taccamiViewModel.findTaccamiByTCMat("%" + tractora + "%", "%" + cisterna + "%").observe(getActivity(), new Observer<List<TaccamiEntity>>() {
+            @Override
+            public void onChanged(List<TaccamiEntity> taccamiEntities) {
+                taccamiList4 = taccamiEntities;
+            }
+        });
+    }
+
+    private List<Integer> compararCodVehiculo(List<Integer> vehiculo1, List<Integer> vehiculo2){
+        final List<Integer> cod_vehiculo = new ArrayList<>();
+
+        for(int i=0; i<vehiculo1.size();i++){
+            for(int j=0;j<vehiculo2.size();j++){
+                if(vehiculo1.get(i).equals(vehiculo2.get(j))){
+                    cod_vehiculo.add(vehiculo1.get(i));
+                }
+            }
+        }
+
+        return cod_vehiculo;
+    }
+
+    private void buscaConjuntos(List<Integer> vehiculo){
+        for(int i=0;i<vehiculo.size();i++) {
+            taccamiList3.add(taccamiViewModel.findTaccamiByCodVehiculo(vehiculo.get(i)));
+        }
+    }
+
+
     private void lanzarViewModel() {
         tacprcoViewModel = ViewModelProviders.of(getActivity()).get(TacprcoViewModel.class);
         tacsecoViewModel = ViewModelProviders.of(getActivity()).get(TacsecoViewModel.class);
