@@ -1,4 +1,4 @@
-package com.javierpinya.testcamiones_v3;
+package com.javierpinya.testcamiones_v3.ViewModels;
 
 import android.app.Application;
 import android.os.AsyncTask;

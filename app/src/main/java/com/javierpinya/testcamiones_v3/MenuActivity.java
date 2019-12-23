@@ -20,14 +20,6 @@ public class MenuActivity extends AppCompatActivity {
 
     FragmentPagerAdapter adapter;
 
-    private BottomNavigationView bottomNavigationView;
-    private FrameLayout frameLayout;
-
-    private DashboardFragment dashboardFragment;
-    private PerfilFragment perfilFragment;
-    private SincronizarFragment sincronizarFragment;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

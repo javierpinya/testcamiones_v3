@@ -26,12 +26,12 @@ import com.javierpinya.testcamiones_v3.Clases.TacsecoEntity;
 import com.javierpinya.testcamiones_v3.Clases.UsuarioEntity;
 import com.javierpinya.testcamiones_v3.NuevoUsuarioDialogViewModel;
 import com.javierpinya.testcamiones_v3.R;
-import com.javierpinya.testcamiones_v3.TaccamiViewModel;
-import com.javierpinya.testcamiones_v3.TaccatrViewModel;
-import com.javierpinya.testcamiones_v3.TaccondViewModel;
-import com.javierpinya.testcamiones_v3.TacprcoViewModel;
-import com.javierpinya.testcamiones_v3.TacsecoViewModel;
-import com.javierpinya.testcamiones_v3.TplcprtViewModel;
+import com.javierpinya.testcamiones_v3.ViewModels.TaccamiViewModel;
+import com.javierpinya.testcamiones_v3.ViewModels.TaccatrViewModel;
+import com.javierpinya.testcamiones_v3.ViewModels.TaccondViewModel;
+import com.javierpinya.testcamiones_v3.ViewModels.TacprcoViewModel;
+import com.javierpinya.testcamiones_v3.ViewModels.TacsecoViewModel;
+import com.javierpinya.testcamiones_v3.ViewModels.TplcprtViewModel;
 import com.opencsv.CSVReader;
 
 import java.io.File;

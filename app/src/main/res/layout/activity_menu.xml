@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:actionBarNavMode="tabs">
-    <!--android:paddingTop="?attr/actionBarSize" en el linearlayout-->
-
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
