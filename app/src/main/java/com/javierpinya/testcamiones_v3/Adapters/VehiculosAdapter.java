@@ -60,15 +60,18 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Vehi
         public VehiculosAdapter_Holder(@NonNull View itemView) {
             super(itemView);
 
-            /* Esto está mal, hay que hacerlo con ViewModel...*/
+
             this.tvTractora = itemView.findViewById(R.id.tvTractora);
             this.tvCisterna = itemView.findViewById(R.id.tvCisterna);
             this.ivTractora = itemView.findViewById(R.id.ivTractora);
             this.ivCisterna = itemView.findViewById(R.id.ivCisterna);
+            /*
             this.ivTractoraBloqueada = itemView.findViewById(R.id.ind_observaciones);
             this.ivCisternaBloqueada = itemView.findViewById(R.id.ivCisternaBloqueada);
             this.ivTractoraInspeccionada = itemView.findViewById(R.id.ivTractoraInspeccionada);
             this.ivCisternaInspeccionada = itemView.findViewById(R.id.ivCisternaInspeccionada);
+
+             */
         }
 
 
@@ -86,7 +89,7 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Vehi
                 this.ivTractora.setImageResource(R.drawable.ic_oil_truck);
             }
 
-             */
+
 
             if(bloqueoCisterna==1){
                 this.ivCisternaBloqueada.setImageResource(R.drawable.ic_ban);
@@ -101,6 +104,8 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Vehi
             }else{
                 this.ivTractoraBloqueada.setImageResource(R.drawable.ic_checked);
             }
+            */
+
     /*
             if(){
                 this.ivCisternaInspeccionada.setImageResource(R.drawable.ic_inspeccionado_true);
