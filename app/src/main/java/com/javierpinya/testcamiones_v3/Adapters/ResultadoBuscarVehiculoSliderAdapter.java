@@ -4,7 +4,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.ViewModelProviders;
 
+import com.javierpinya.testcamiones_v3.ViewModels.TaccondViewModel;
+import com.javierpinya.testcamiones_v3.ViewModels.TacprcoViewModel;
+import com.javierpinya.testcamiones_v3.ViewModels.TacsecoViewModel;
+import com.javierpinya.testcamiones_v3.ViewModels.TplcprtViewModel;
 import com.javierpinya.testcamiones_v3.ui.ResultadoBuscarVehiculo.ResultadoBuscarCisternaFragment;
 import com.javierpinya.testcamiones_v3.ui.ResultadoBuscarVehiculo.ResultadoBuscarConductorFragment;
 import com.javierpinya.testcamiones_v3.ui.ResultadoBuscarVehiculo.ResultadoBuscarRigidoFragment;
@@ -12,7 +17,15 @@ import com.javierpinya.testcamiones_v3.ui.ResultadoBuscarVehiculo.ResultadoBusca
 
 public class ResultadoBuscarVehiculoSliderAdapter extends FragmentPagerAdapter {
 
-    public ResultadoBuscarVehiculoSliderAdapter(FragmentManager fm){ super (fm);}
+    private String tractora;
+    private String cisterna;
+
+
+    public ResultadoBuscarVehiculoSliderAdapter(FragmentManager fm, String tractora, String cisterna){
+        super (fm);
+        this.tractora = tractora;
+        this.cisterna = cisterna;
+    }
 
 
     @Override
@@ -55,4 +68,6 @@ public class ResultadoBuscarVehiculoSliderAdapter extends FragmentPagerAdapter {
         }
         return "0";
     }
+
+
 }

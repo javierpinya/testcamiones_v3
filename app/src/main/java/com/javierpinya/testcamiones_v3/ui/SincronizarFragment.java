@@ -172,25 +172,6 @@ public class SincronizarFragment extends Fragment {
             public void onClick(View v) {
                 String cadena="";
                 List resultado = new ArrayList();
-/*
-                tacprcoViewModel.getAllTacprco().observe(getActivity(), new Observer<List<TacprcoEntity>>() {
-                    @Override
-                    public void onChanged(List<TacprcoEntity> tacprcoEntities) {
-                        for (int i=0;i<tacprcoEntities.size();i++){
-                            Log.d("TACPRCO: ", tacprcoEntities.get(i).getMatricula() + " " + tacprcoEntities.get(i).getTara() + " " + tacprcoEntities.get(i).getChip() + " " + df.format(tacprcoEntities.get(i).getFec_cadu_adr()));
-                        }
-                    }
-                });
-
-                tacsecoViewModel.getAllTacseco().observe(getActivity(), new Observer<List<TacsecoEntity>>() {
-                    @Override
-                    public void onChanged(List<TacsecoEntity> tacsecoEntities) {
-                        for (int i=0;i<tacsecoEntities.size();i++){
-                            Log.d("TACSECO: ", tacsecoEntities.get(i).getMatricula() + " " + tacsecoEntities.get(i).getTara() + " " + tacsecoEntities.get(i).getChip() + " " + df.format(tacsecoEntities.get(i).getFec_cadu_adr()));
-                        }
-                    }
-                });
-*/
                 taccamiViewModel.findAllVehiculos().observe(getActivity(), new Observer<List<TaccamiEntity>>() {
                     @Override
                     public void onChanged(List<TaccamiEntity> taccamiEntities) {

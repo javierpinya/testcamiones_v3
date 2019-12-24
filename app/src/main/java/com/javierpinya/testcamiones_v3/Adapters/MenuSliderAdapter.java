@@ -1,4 +1,6 @@
 package com.javierpinya.testcamiones_v3.Adapters;
+import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -11,8 +13,11 @@ import com.javierpinya.testcamiones_v3.ui.SincronizarFragment;
 
 public class MenuSliderAdapter extends FragmentPagerAdapter{
 
-    public MenuSliderAdapter(FragmentManager fm) {
+    private String tractora;
+
+    public MenuSliderAdapter(FragmentManager fm, String tractora) {
         super(fm);
+        this.tractora = tractora;
     }
 
 
@@ -23,9 +28,12 @@ public class MenuSliderAdapter extends FragmentPagerAdapter{
 
     @Override
     public Fragment getItem(int position) {
+        Bundle args = new Bundle();
         switch (position){
             case 0:
                 PerfilFragment perfilFragment = new PerfilFragment();
+                args.putString("tractora", tractora);
+                perfilFragment.setArguments(args);
                 return perfilFragment;
             case 1:
                 DashboardFragment dashboardFragment = new DashboardFragment();

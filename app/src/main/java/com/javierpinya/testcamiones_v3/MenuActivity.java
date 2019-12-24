@@ -26,7 +26,7 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         ViewPager vpPager = (ViewPager) findViewById(R.id.pager);
-        adapter = new MenuSliderAdapter(getSupportFragmentManager());
+        adapter = new MenuSliderAdapter(getSupportFragmentManager(), "hola");
         vpPager.setAdapter(adapter);
         vpPager.setPageTransformer(true, new CubeOutTransformer());
     }
