@@ -25,6 +25,10 @@ public class TacsecoViewModel extends AndroidViewModel {
         return tacsecoRepository.findTacsecoByMatricula(matricula);
     }
 
+    public TacsecoEntity findTacsecoByOneMatricula(String matricula){
+        return tacsecoRepository.findTacsecoByOneMatricula(matricula);
+    }
+
     public TacsecoEntity findTacsecoById(int id){
         return tacsecoRepository.findTacsecoById(id);
     }

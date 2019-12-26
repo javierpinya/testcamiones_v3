@@ -14,6 +14,7 @@ import android.os.Bundle;
 import com.ToxicBakery.viewpager.transforms.CubeOutTransformer;
 import com.ToxicBakery.viewpager.transforms.FlipHorizontalTransformer;
 import com.javierpinya.testcamiones_v3.Adapters.ResultadoBuscarVehiculoSliderAdapter;
+import com.javierpinya.testcamiones_v3.Clases.TacprcoEntity;
 import com.javierpinya.testcamiones_v3.ViewModels.TacprcoViewModel;
 import com.javierpinya.testcamiones_v3.ViewModels.TacsecoViewModel;
 
@@ -22,7 +23,7 @@ public class ResultadoBuscarVehiculoActivity extends AppCompatActivity{
     FragmentPagerAdapter adapter;
     private String matT;
     private String matC;
-    private Context context;
+    private TacprcoViewModel tacprcoViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class ResultadoBuscarVehiculoActivity extends AppCompatActivity{
         Intent intent = getIntent();
         matT = intent.getStringExtra("tractora");
         matC = intent.getStringExtra("cisterna");
-        ViewPager vpPager = (ViewPager) findViewById(R.id.pager);
+        ViewPager vpPager = (ViewPager) findViewById(R.id.pager_resultado_buscar_vehiculo);
         adapter = new ResultadoBuscarVehiculoSliderAdapter(getSupportFragmentManager(), matT, matC);
         vpPager.setAdapter(adapter);
         vpPager.setPageTransformer(true, new FlipHorizontalTransformer());

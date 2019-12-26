@@ -26,6 +26,9 @@ public interface TacsecoDao {
     @Query("SELECT * FROM tacseco WHERE matricula LIKE :matricula")
     LiveData<List<TacsecoEntity>> findTacsecoByMatricula(String matricula);
 
+    @Query("SELECT * FROM tacseco WHERE matricula LIKE :matricula")
+    TacsecoEntity findTacsecoByOneMatricula(String matricula);
+
     @Query("SELECT * FROM tacseco WHERE id LIKE :id")
     TacsecoEntity findTacsecoById(int id);
 

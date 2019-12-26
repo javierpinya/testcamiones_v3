@@ -1,5 +1,7 @@
 package com.javierpinya.testcamiones_v3.Adapters;
 
+import android.content.Context;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -37,13 +39,13 @@ public class ResultadoBuscarVehiculoSliderAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                ResultadoBuscarTractoraFragment resultadoBuscarTractoraFragment= new ResultadoBuscarTractoraFragment();
+                ResultadoBuscarTractoraFragment resultadoBuscarTractoraFragment= new ResultadoBuscarTractoraFragment(tractora);
                 return resultadoBuscarTractoraFragment;
             case 1:
                 ResultadoBuscarRigidoFragment resultadoBuscarRigidoFragment= new ResultadoBuscarRigidoFragment();
                 return resultadoBuscarRigidoFragment;
             case 2:
-                ResultadoBuscarCisternaFragment resultadoBuscarCisternaFragment = new ResultadoBuscarCisternaFragment();
+                ResultadoBuscarCisternaFragment resultadoBuscarCisternaFragment = new ResultadoBuscarCisternaFragment(cisterna);
                 return resultadoBuscarCisternaFragment;
             case 3:
                 ResultadoBuscarConductorFragment resultadoBuscarConductorFragment = new ResultadoBuscarConductorFragment();

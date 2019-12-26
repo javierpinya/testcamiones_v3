@@ -10,7 +10,7 @@
     <!--android:paddingTop="?attr/actionBarSize" en el linearlayout-->
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
+        android:id="@+id/resultado_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

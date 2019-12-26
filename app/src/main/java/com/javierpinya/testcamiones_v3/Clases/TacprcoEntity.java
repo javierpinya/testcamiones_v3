@@ -30,6 +30,8 @@ public class TacprcoEntity {
     public boolean ind_bloqueo = false;
     public boolean ind_queroseno = false;
 
+    //public TacprcoEntity(){}
+
     public TacprcoEntity(String matricula, Date fec_cadu_itv, Date fec_cadu_adr, int tara, int peso_maximo, int chip, String tipo, Date fec_baja, String cod_nacion, boolean solo_gasoleos, boolean ind_bloqueo, boolean ind_queroseno) {
         this.matricula = matricula;
         this.tara = tara;

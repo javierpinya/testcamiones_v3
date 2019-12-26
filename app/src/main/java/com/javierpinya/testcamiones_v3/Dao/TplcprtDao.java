@@ -23,7 +23,7 @@ public interface TplcprtDao {
     void deleteTplcprtById(TplcprtEntity tplcprt);
 
     @Query("SELECT * FROM tplcprt WHERE matricula LIKE :cisterna")
-    LiveData<List<TplcprtEntity>> findTplcprtById(int cisterna);
+    TplcprtEntity findTplcprtByMatricula (String cisterna);
 
     @Query("SELECT * FROM tplcprt WHERE cod_tag_cprt LIKE :tag")
     LiveData<List<TplcprtEntity>> findTplcprtByTag(int tag);

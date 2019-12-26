@@ -25,6 +25,10 @@ public class TacsecoRepository {
         return tacsecoDao.findTacsecoByMatricula(matricula);
     }
 
+    public TacsecoEntity findTacsecoByOneMatricula(String matricula){
+        return tacsecoDao.findTacsecoByOneMatricula(matricula);
+    }
+
     public LiveData<List<TacsecoEntity>> getAllTacseco(){
         return tacsecoDao.getAllTacseco();
     }

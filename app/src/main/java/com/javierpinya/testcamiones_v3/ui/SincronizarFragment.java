@@ -79,15 +79,6 @@ public class SincronizarFragment extends Fragment {
     private Date date = new Date();
     private final DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
     private SimpleDateFormat parseador = new SimpleDateFormat("dd/MM/yyyy");
-    private int taccamiSize;
-    private List<Integer> taccamiIds = new ArrayList<>();
-    private List<Integer> tacprcoids = new ArrayList<>();
-    private List<String> tacprcoMat = new ArrayList<>();
-    private List<Integer> tacsecoids = new ArrayList<>();
-    private List<String> tacsecoMat = new ArrayList<>();
-    private int tacprcoid;
-    private int tacsecoid;
-    private int taccamiid;
     private List<String> contentTaccatr = new ArrayList<>();
     private int espera=0;
 
