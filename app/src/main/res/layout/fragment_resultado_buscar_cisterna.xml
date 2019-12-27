@@ -15,7 +15,7 @@
             android:orientation="vertical"
             android:background="@color/colorPrimary">
             <TextView
-                android:id="@+id/tv_rigido"
+                android:id="@+id/tv_cisterna"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -27,7 +27,7 @@
                 android:text="DATOS DE LA CISTERNA" />
 
             <TextView
-                android:id="@+id/tv_tractoramatricula"
+                android:id="@+id/tv_cisternamatricula"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -60,7 +60,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_tipotractora"
+                            android:id="@+id/tv_tipocisterna"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="TIPO COMPONENTE"
@@ -68,7 +68,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_tipotractora1"
+                            android:id="@+id/tv_tipocisterna1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -86,7 +86,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_chiptractora"
+                            android:id="@+id/tv_chipcisterna"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="CHIP"
@@ -94,7 +94,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_chiptractora1"
+                            android:id="@+id/tv_chipcisterna1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -112,7 +112,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_adrtractora"
+                            android:id="@+id/tv_adrcisterna"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ADR"
@@ -120,7 +120,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_adrtractora1"
+                            android:id="@+id/tv_adrcisterna1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -138,7 +138,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_itvtractora"
+                            android:id="@+id/tv_itvcisterna"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ITV"
@@ -146,7 +146,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_itvtractora1"
+                            android:id="@+id/tv_itvcisterna1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -164,7 +164,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_ejestractora"
+                            android:id="@+id/tv_ejescisterna"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Ejes"
@@ -172,7 +172,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_ejestractora1"
+                            android:id="@+id/tv_ejescisterna1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -190,7 +190,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_taratractora"
+                            android:id="@+id/tv_taracisterna"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Tara"
@@ -198,7 +198,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_taratractora1"
+                            android:id="@+id/tv_taracisterna1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -216,7 +216,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_mmatractora"
+                            android:id="@+id/tv_mmacisterna"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="MMA"
@@ -224,7 +224,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_mmatractora1"
+                            android:id="@+id/tv_mmacisterna1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -242,7 +242,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_contadortractora"
+                            android:id="@+id/tv_contadorcisterna"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Contador"
@@ -250,7 +250,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_contadortractora1"
+                            android:id="@+id/tv_contadorcisterna1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -268,7 +268,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_tablacaltractora"
+                            android:id="@+id/tv_tablacalcisterna"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Tabla Calibración"
@@ -276,7 +276,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_tablacaltractora1"
+                            android:id="@+id/tv_tablacalcisterna1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -294,7 +294,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_sologasoleostractora"
+                            android:id="@+id/tv_sologasoleoscisterna"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Sólo Gasóleos"
@@ -302,7 +302,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_sologasoleostractora1"
+                            android:id="@+id/tv_sologasoleoscisterna1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -320,7 +320,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_cargapesados"
+                            android:id="@+id/tv_cargapesadoscisterna"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Carga Pesados"
@@ -328,7 +328,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_cargapesados1"
+                            android:id="@+id/tv_cargapesadoscisterna1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -346,7 +346,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_Bloqueadotractora"
+                            android:id="@+id/tv_Bloqueadacisterna"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Bloqueado"
@@ -355,7 +355,7 @@
 
 
                         <TextView
-                            android:id="@+id/tv_Bloqueadotractora1"
+                            android:id="@+id/tv_Bloqueadacisterna1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -367,10 +367,13 @@
 
                     </LinearLayout>
 
-                    <ListView
-                        android:id="@+id/lv_compartimentos"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_compartimentos"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"></ListView>
+                        android:layout_height="0dp"
+                        android:layout_margin="0dp"/>
+
+
 
                 </LinearLayout>
             </ScrollView>
