@@ -22,8 +22,8 @@ public class TplcprtViewModel extends AndroidViewModel {
         tplcprtRepository = new TplcprtRepository(application);
     }
 
-    public LiveData<List<TplcprtEntity>> findTplcprtById(int cisterna){
-        return tplcprtRepository.findTplcprtById(cisterna);
+    public LiveData<List<TplcprtEntity>> findTplcprtByMatricula(String cisterna){
+        return tplcprtRepository.findTplcprtByMatricula(cisterna);
     }
 
     public LiveData<List<TplcprtEntity>> findTplcprtByTag(int tag){

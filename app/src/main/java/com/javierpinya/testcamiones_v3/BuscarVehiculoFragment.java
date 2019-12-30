@@ -236,7 +236,6 @@ public class BuscarVehiculoFragment extends Fragment {
                         intent.putExtra("cisterna", matC);
                         intent.setClass(getContext(), ResultadoBuscarVehiculoActivity.class);
                         startActivity(intent);
-                        Toast.makeText(getActivity(), matT + " - " + matC + " - " + position, Toast.LENGTH_SHORT).show();
                     }
                 });
 

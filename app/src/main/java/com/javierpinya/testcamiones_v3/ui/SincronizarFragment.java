@@ -23,6 +23,7 @@ import com.javierpinya.testcamiones_v3.Clases.TaccamiEntity;
 import com.javierpinya.testcamiones_v3.Clases.TaccatrEntity;
 import com.javierpinya.testcamiones_v3.Clases.TacprcoEntity;
 import com.javierpinya.testcamiones_v3.Clases.TacsecoEntity;
+import com.javierpinya.testcamiones_v3.Clases.TplcprtEntity;
 import com.javierpinya.testcamiones_v3.Clases.UsuarioEntity;
 import com.javierpinya.testcamiones_v3.NuevoUsuarioDialogViewModel;
 import com.javierpinya.testcamiones_v3.R;
@@ -74,6 +75,7 @@ public class SincronizarFragment extends Fragment {
     private final List<String> contentTacprco = new ArrayList<>();
     private final List<String> contentTacseco = new ArrayList<>();
     private final List<String> contentTaccami = new ArrayList<>();
+    private final List<String> contentTplcprt = new ArrayList<>();
     private final String path = "/storage/emulated/0/Download/TestCamiones/";
     private TacprcoEntity tacprcoEntity;
     private Date date = new Date();
@@ -115,6 +117,7 @@ public class SincronizarFragment extends Fragment {
                 contentTacseco.add("E000" + i + "BBB,20/10/2020,20/10/2020,5210" + i + ",18000,80000" + i + ",R,20/10/2060,3,0,20/10/2060,E,N,N,N" + "\n");
                 contentTaccami.add(i + ",E000" + i + "AAA,E000" + i + "BBB,18000,40000,20/10/2020\n");
                 contentTaccatr.add(i + ",0010,23" + i + ",20/10/2020\n");
+                contentTplcprt.add(i + ",0,E000" + i + "BBB," + 5000+i + ",9999"+i);
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -123,6 +126,7 @@ public class SincronizarFragment extends Fragment {
         saveTextAsFile("Tacseco", contentTacseco);
         saveTextAsFile("Taccami", contentTaccami);
         saveTextAsFile("Taccatr", contentTaccatr);
+        saveTextAsFile("Tplcprt", contentTplcprt);
         //completarTaccami();
 
 
@@ -135,11 +139,13 @@ public class SincronizarFragment extends Fragment {
                 tacsecoViewModel.deleteAllTacseco();
                 taccamiViewModel.deleteAllTaccami();
                 taccatrViewModel.deleteAllTaccatr();
+                tplcprtViewModel.deleteAllTplcprt();
 
                 leerTacprco("Tacprco.csv");
                 leerTacseco("Tacseco.csv");
                 leerTaccami("Taccami.csv");
                 leerTaccatr("Taccatr.csv");
+                leerTplcprt("Tplcprt.csv");
             }
         });
 
@@ -168,6 +174,14 @@ public class SincronizarFragment extends Fragment {
                     public void onChanged(List<TaccamiEntity> taccamiEntities) {
                         for (int i=0;i<taccamiEntities.size();i++){
                             Log.d("Taccami: ", taccamiEntities.get(i).getTractora());
+                        }
+                    }
+                });
+                tplcprtViewModel.findTplcprtByMatricula("E0000BBB").observe(getActivity(), new Observer<List<TplcprtEntity>>() {
+                    @Override
+                    public void onChanged(List<TplcprtEntity> tplcprtEntities) {
+                        for(int i=0;i<tplcprtEntities.size();i++){
+                            Log.d("tplcprt", tplcprtEntities.get(i).getCod_tag_cprt());
                         }
                     }
                 });
@@ -330,6 +344,19 @@ public class SincronizarFragment extends Fragment {
             e.printStackTrace();
         }
 
+    }
+
+    private void leerTplcprt(String filename){
+        File file = new File(getActivity().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), filename);
+        try {
+            CSVReader reader = new CSVReader(new FileReader(file));
+            String[] nextLine;
+            while ((nextLine = reader.readNext()) != null) {
+                tplcprtViewModel.insertTplcprt(new TplcprtEntity(Integer.valueOf(nextLine[0]), nextLine[1], nextLine[2], Integer.valueOf(nextLine[3]), nextLine[4]));
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     //Select file from storate

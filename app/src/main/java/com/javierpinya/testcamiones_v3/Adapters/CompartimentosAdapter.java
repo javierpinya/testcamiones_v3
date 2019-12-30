@@ -17,12 +17,11 @@ public class CompartimentosAdapter extends RecyclerView.Adapter<CompartimentosAd
 
     private List<TplcprtEntity> compartimentos_list;
     private int layout;
-    private OnItemClickListener listener;
 
-    public CompartimentosAdapter(List<TplcprtEntity> compartimentos_list, int layout, OnItemClickListener listener){
+
+    public CompartimentosAdapter(List<TplcprtEntity> compartimentos_list, int layout){
         this.compartimentos_list = compartimentos_list;
         this.layout = layout;
-        this.listener = listener;
     }
 
     @NonNull
@@ -37,7 +36,7 @@ public class CompartimentosAdapter extends RecyclerView.Adapter<CompartimentosAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(compartimentos_list.get(position), listener);
+        holder.bind(compartimentos_list.get(position));
     }
 
 
@@ -57,21 +56,10 @@ public class CompartimentosAdapter extends RecyclerView.Adapter<CompartimentosAd
             tag = itemView.findViewById(R.id.tag1);
         }
 
-        public void bind(final TplcprtEntity compartimentos, final OnItemClickListener listener){
+        public void bind(final TplcprtEntity compartimentos){
             this.numcomp.setText(compartimentos_list.get(getAdapterPosition()).getCod_compartimento());
             this.capacidad.setText(compartimentos_list.get(getAdapterPosition()).getCan_capacidad());
             this.tag.setText(compartimentos_list.get(getAdapterPosition()).getCod_tag_cprt());
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(compartimentos, getAdapterPosition());
-                }
-            });
         }
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(TplcprtEntity compartimentosList, int position);
     }
 }

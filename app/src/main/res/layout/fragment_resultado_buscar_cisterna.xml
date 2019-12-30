@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="6dp"
     tools:context=".ui.ResultadoBuscarVehiculo.ResultadoBuscarCisternaFragment">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,23 +40,16 @@
                 android:textColor="@color/icons"
                 android:textStyle="bold"
                 android:text="R0000AAA" />
+
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -367,18 +364,17 @@
 
                     </LinearLayout>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_compartimentos"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_margin="0dp"/>
-
-
-
                 </LinearLayout>
-            </ScrollView>
-        </LinearLayout>
+        <Button
+            android:id="@+id/tv_compartimentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="COMPARTIMENTOS"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
 
     </LinearLayout>
-
-</FrameLayout>
+</ScrollView>

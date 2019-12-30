@@ -82,43 +82,6 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Vehi
             this.ivCisterna.setImageResource(R.drawable.ic_oil_tank);
             this.ivTractora.setImageResource(R.drawable.ic_frontal_truck);  //Habría que cambiarlo en el futuro, discriminando entre tractora y rígido
 
-            /*
-            if(listaVehiculoEntities.get(getAdapterPosition()).gettTipo().equals("T")){
-                this.ivTractora.setImageResource(R.drawable.ic_frontal_truck);
-            }else{
-                this.ivTractora.setImageResource(R.drawable.ic_oil_truck);
-            }
-
-
-
-            if(bloqueoCisterna==1){
-                this.ivCisternaBloqueada.setImageResource(R.drawable.ic_ban);
-            }else if (bloqueoCisterna==2){
-                this.ivCisternaBloqueada.setImageResource(R.drawable.ic_checked);
-            }else{
-                this.ivCisternaBloqueada.setImageResource(View.GONE);
-            }
-
-            if(bloqueoTractora==1){
-                this.ivTractoraBloqueada.setImageResource(R.drawable.ic_ban);
-            }else{
-                this.ivTractoraBloqueada.setImageResource(R.drawable.ic_checked);
-            }
-            */
-
-    /*
-            if(){
-                this.ivCisternaInspeccionada.setImageResource(R.drawable.ic_inspeccionado_true);
-            }else{
-                this.ivCisternaInspeccionada.setImageResource(R.drawable.ic_inspeccionado_false);
-            }
-
-            if(listaVehiculoEntities.get(getAdapterPosition()).gettInspeccionada()){
-                this.ivTractoraInspeccionada.setImageResource(R.drawable.ic_inspeccionado_true);
-            }else{
-                this.ivTractoraInspeccionada.setImageResource(R.drawable.ic_inspeccionado_false);
-            }
-     */
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {

@@ -12,15 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.javierpinya.testcamiones_v3.ResultadoBuscarVehiculoActivity"></activity>
-        <activity android:name="com.javierpinya.testcamiones_v3.ResultadoInspeccionActivity" />
-        <activity android:name="com.javierpinya.testcamiones_v3.BuscarInspeccionActivity" />
-        <activity android:name="com.javierpinya.testcamiones_v3.BuscarVehiculoActivity" />
+        <activity android:name=".CompartimentosActivity"></activity>
+        <activity android:name=".ResultadoBuscarVehiculoActivity" />
+        <activity android:name=".ResultadoInspeccionActivity" />
+        <activity android:name=".BuscarInspeccionActivity" />
+        <activity android:name=".BuscarVehiculoActivity" />
         <activity
-            android:name="com.javierpinya.testcamiones_v3.MenuActivity"
+            android:name=".MenuActivity"
             android:label="@string/title_activity_menu" />
         <activity android:name=".MainActivity" />
-        <activity android:name="com.javierpinya.testcamiones_v3.LoginActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

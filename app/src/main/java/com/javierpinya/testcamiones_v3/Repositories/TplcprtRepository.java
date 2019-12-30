@@ -20,8 +20,8 @@ public class TplcprtRepository {
         tplcprtDao = db.tplcprtDao();
     }
 
-    public LiveData<List<TplcprtEntity>> findTplcprtById(int cisterna){
-        return tplcprtDao.findTplcprtById(cisterna);
+    public LiveData<List<TplcprtEntity>> findTplcprtByMatricula(String cisterna){
+        return tplcprtDao.findTplcprtByMatricula(cisterna);
     }
 
     public LiveData<List<TplcprtEntity>> findTplcprtByTag(int tag){

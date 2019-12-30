@@ -1,25 +1,36 @@
 package com.javierpinya.testcamiones_v3.ui.ResultadoBuscarVehiculo;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.TextView;
 
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+import com.javierpinya.testcamiones_v3.Adapters.CompartimentosAdapter;
 import com.javierpinya.testcamiones_v3.AppDatabase;
 import com.javierpinya.testcamiones_v3.Clases.TacsecoEntity;
 import com.javierpinya.testcamiones_v3.Clases.TplcprtEntity;
+import com.javierpinya.testcamiones_v3.CompartimentosActivity;
+import com.javierpinya.testcamiones_v3.LoginActivity;
 import com.javierpinya.testcamiones_v3.R;
-import com.javierpinya.testcamiones_v3.ViewModels.TacsecoViewModel;
 import com.javierpinya.testcamiones_v3.ViewModels.TplcprtViewModel;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,12 +39,9 @@ public class ResultadoBuscarCisternaFragment extends Fragment {
 
     private String cisterna;
     private TacsecoEntity tacsecoEntity;
-    private TplcprtEntity tplcprtEntity;
     private TextView matricula,tipo,chip,adr,itv,ejes,tara,mma,contador,tablacal,sologas,pesados,bloqueada;
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-    //private BuscarTacsecoAsyncTask buscarAsyncTask;
+    private Button compartimentos;
+    private BuscarTacsecoAsyncTask buscarTacsecoAsyncTask;
 
 
     public ResultadoBuscarCisternaFragment(String cisterna) {
@@ -60,7 +68,22 @@ public class ResultadoBuscarCisternaFragment extends Fragment {
         sologas = view.findViewById(R.id.tv_sologasoleoscisterna1);
         pesados = view.findViewById(R.id.tv_cargapesadoscisterna1);
         bloqueada = view.findViewById(R.id.tv_Bloqueadacisterna1);
-        mRecyclerView = view.findViewById(R.id.rv_compartimentos);
+        compartimentos = view.findViewById(R.id.tv_compartimentos);
+        buscarTacsecoAsyncTask = new BuscarTacsecoAsyncTask();
+        buscarTacsecoAsyncTask.execute();
+
+        compartimentos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("cisterna", cisterna);
+                intent.setClass(getContext(), CompartimentosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         return view;
     }
 
@@ -78,11 +101,11 @@ public class ResultadoBuscarCisternaFragment extends Fragment {
 
                 matricula.setText(tacsecoEntity.getMatricula());
                 tipo.setText(tacsecoEntity.getTipo());
-                chip.setText(tacsecoEntity.getChip());
+                chip.setText(String.valueOf(tacsecoEntity.getChip()));
                 adr.setText(tacsecoEntity.getFec_cadu_adr().toString());
                 itv.setText(tacsecoEntity.getFec_cadu_itv().toString());
-                tara.setText(tacsecoEntity.getTara());
-                mma.setText(tacsecoEntity.getPeso_maximo());
+                tara.setText(String.valueOf(tacsecoEntity.getTara()));
+                mma.setText(String.valueOf(tacsecoEntity.getPeso_maximo()));
                 bloqueada.setText(String.valueOf(tacsecoEntity.getInd_bloqueo()));
                 tablacal.setText(tacsecoEntity.getFec_cadu_calibracion().toString());
                 sologas.setText(String.valueOf(tacsecoEntity.getInd_bloqueo()));
@@ -90,18 +113,6 @@ public class ResultadoBuscarCisternaFragment extends Fragment {
         }
     }
 
-    private class BuscarTplcprtAsyncTask extends AsyncTask<Void,Integer,TplcprtEntity>{
 
-        @Override
-        protected TplcprtEntity doInBackground(Void... voids) {
-            tplcprtEntity = AppDatabase.getDatabase(getActivity()).tplcprtDao().findTplcprtByMatricula(cisterna);
-            return tplcprtEntity;
-        }
 
-        @Override
-        protected void onPostExecute(TplcprtEntity tplcprtEntity) {
-            super.onPostExecute(tplcprtEntity);
-
-        }
-    }
 }
