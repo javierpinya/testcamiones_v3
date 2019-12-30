@@ -32,7 +32,7 @@ public class CompartimentosFragment extends Fragment {
     private String cisterna;
     private List<TplcprtEntity> tplcprtEntity;
     private TplcprtViewModel tplcprtViewModel;
-    private BuscarTplcprtAsyncTask buscarTplcprtAsyncTask;
+    //private BuscarTplcprtAsyncTask buscarTplcprtAsyncTask;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -48,6 +48,7 @@ public class CompartimentosFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_compartimentos, container, false);
+        /*
         cisterna = getArguments().getString("cisterna");
         mRecyclerView = view.findViewById(R.id.rv_compartimentos);
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -55,9 +56,11 @@ public class CompartimentosFragment extends Fragment {
         buscarTplcprtAsyncTask = new BuscarTplcprtAsyncTask();
         buscarTplcprtAsyncTask.execute();
 
+
+         */
         return view;
     }
-
+/*
     private void UnSegundo(){
         try{
             Thread.sleep(1000);
@@ -98,5 +101,7 @@ public class CompartimentosFragment extends Fragment {
 
         }
     }
+
+ */
 
 }

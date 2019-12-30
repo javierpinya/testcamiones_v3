@@ -8,26 +8,63 @@
     tools:context=".BuscarInspeccionFragment">
 
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/conductorTextInputLayout"
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:helperTextEnabled="false"
+            tools:layout_editor_absoluteX="184dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etConductor"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="cod_conductor" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:id="@+id/linearconductor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar3">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/conductorTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"
+                app:helperTextEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etConductor"
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="cod_conductor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/transportistaTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="wrap_content"
+                app:helperTextEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ettransportista"
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="011" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearinspectorInstalacion"
@@ -37,7 +74,7 @@
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/conductorTextInputLayout">
+            app:layout_constraintTop_toBottomOf="@+id/linearconductor">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inspectorTextInputLayout"
@@ -48,6 +85,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etInspector"
+                    android:inputType="textPostalAddress"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="inspector" />
@@ -69,42 +107,49 @@
 
         </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/primercompTextInputLayout"
+        <LinearLayout
+            android:id="@+id/lineacomponentes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_margin="16dp"
-            app:helperTextEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearinspectorInstalacion">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/primercompTextInputLayout"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            app:helperTextEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPrimerComp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Primer Componente" />
-        </com.google.android.material.textfield.TextInputLayout>
 
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/segundocompTextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/primercompTextInputLayout">
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSegundoComp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Segundo Componente" />
+
         </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
 
         <Button
-            android:id="@+id/btnBuscarVehiculo"
+            android:id="@+id/btnBuscarInspeccion"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -115,14 +160,14 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/segundocompTextInputLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/lineacomponentes" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_identificacionvehiculo"
+            android:id="@+id/rv_buscarinspeccion"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/btnBuscarVehiculo"
+            app:layout_constraintTop_toBottomOf="@+id/btnBuscarInspeccion"
             tools:layout_editor_absoluteX="16dp">
 
         </androidx.recyclerview.widget.RecyclerView>

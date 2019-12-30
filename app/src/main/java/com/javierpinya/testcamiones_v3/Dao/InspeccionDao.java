@@ -38,16 +38,40 @@ public interface InspeccionDao {
     @Query("select * from inspeccion where instalacion like :instalacion")
     LiveData<List<InspeccionEntity>> findInspeccionByInstalacion(String instalacion);
 
-    @Query("select * from inspeccion where transportista in (select id from taccatr where cod_transportista like :transportista)")
+    @Query("select * from inspeccion where transportista LIKE :transportista")
     LiveData<List<InspeccionEntity>> findInspeccionByTransportista(String transportista);
 
-    @Query("select * from inspeccion where tractora in (select id from tacprco where matricula like :matricula)")
+    @Query("select * from inspeccion where tractora like :matricula")
     LiveData<List<InspeccionEntity>> findInspeccionByTractora(String matricula);
 
-    @Query("select * from inspeccion where cisterna in (select id from tacseco where matricula like :matricula)")
+    @Query("select * from inspeccion where cisterna like :matricula")
     LiveData<List<InspeccionEntity>> findInspeccionByCisterna(String matricula);
 
-    @Query("select * from inspeccion where conductor in (select id from taccond where conductor like :conductor)")
+    @Query("select * from inspeccion where conductor like :conductor")
     LiveData<List<InspeccionEntity>> findInspeccionByConductor(String conductor);
+
+    @Query("SELECT * FROM inspeccion WHERE inspector LIKE :inspector AND conductor LIKE :conductor AND instalacion LIKE :instalacion AND tractora LIKE :tractora AND cisterna LIKE :cisterna")
+    LiveData<List<InspeccionEntity>> findInspeccionByEverything(String inspector,String conductor,String instalacion,String tractora, String cisterna);
+
+    @Query("SELECT * FROM inspeccion WHERE inspector LIKE :inspector AND conductor LIKE :conductor AND instalacion LIKE :instalacion AND tractora LIKE :tractora")
+    LiveData<List<InspeccionEntity>> findInspeccionByINCOIATR(String inspector,String conductor,String instalacion,String tractora);
+
+    @Query("SELECT * FROM inspeccion WHERE inspector LIKE :inspector AND conductor LIKE :conductor AND instalacion LIKE :instalacion AND cisterna LIKE :cisterna")
+    LiveData<List<InspeccionEntity>> findInspeccionByINCOIACI(String inspector,String conductor,String instalacion, String cisterna);
+
+    @Query("SELECT * FROM inspeccion WHERE conductor LIKE :conductor AND instalacion LIKE :instalacion AND tractora LIKE :tractora AND cisterna LIKE :cisterna")
+    LiveData<List<InspeccionEntity>> findInspeccionByCOIATRCI(String conductor,String instalacion, String tractora, String cisterna);
+
+    @Query("SELECT * FROM inspeccion WHERE conductor LIKE :conductor AND tractora LIKE :tractora AND cisterna LIKE :cisterna")
+    LiveData<List<InspeccionEntity>> findInspeccionByCOTRCI(String conductor,String tractora, String cisterna);
+
+    @Query("SELECT * FROM inspeccion WHERE inspector LIKE :inspector AND instalacion LIKE :instalacion")
+    LiveData<List<InspeccionEntity>> findInspeccionByINIA(String inspector,String instalacion);
+
+    @Query("SELECT * FROM inspeccion WHERE instalacion LIKE :instalacion AND transportista LIKE :transportista")
+    LiveData<List<InspeccionEntity>> findInspeccionByTRANSPIA(String instalacion,String transportista);
+
+
+
 
 }

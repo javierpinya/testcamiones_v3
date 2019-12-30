@@ -57,8 +57,8 @@ public class CompartimentosAdapter extends RecyclerView.Adapter<CompartimentosAd
         }
 
         public void bind(final TplcprtEntity compartimentos){
-            this.numcomp.setText(compartimentos_list.get(getAdapterPosition()).getCod_compartimento());
-            this.capacidad.setText(compartimentos_list.get(getAdapterPosition()).getCan_capacidad());
+            this.numcomp.setText(String.valueOf(compartimentos_list.get(getAdapterPosition()).getCod_compartimento()));
+            this.capacidad.setText(String.valueOf(compartimentos_list.get(getAdapterPosition()).getCan_capacidad()));
             this.tag.setText(compartimentos_list.get(getAdapterPosition()).getCod_tag_cprt());
         }
     }

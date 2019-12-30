@@ -117,11 +117,12 @@ public class SincronizarFragment extends Fragment {
                 contentTacseco.add("E000" + i + "BBB,20/10/2020,20/10/2020,5210" + i + ",18000,80000" + i + ",R,20/10/2060,3,0,20/10/2060,E,N,N,N" + "\n");
                 contentTaccami.add(i + ",E000" + i + "AAA,E000" + i + "BBB,18000,40000,20/10/2020\n");
                 contentTaccatr.add(i + ",0010,23" + i + ",20/10/2020\n");
-                contentTplcprt.add(i + ",0,E000" + i + "BBB," + 5000+i + ",9999"+i);
+                contentTplcprt.add(i + ",0,E000" + i + "BBB," + 5000+i + ",9999"+i+"\n");
             }catch(Exception e){
                 e.printStackTrace();
             }
         }
+        Log.d("contenttplcprt", contentTplcprt.get(7));
         saveTextAsFile("Tacprco", contentTacprco);
         saveTextAsFile("Tacseco", contentTacseco);
         saveTextAsFile("Taccami", contentTaccami);
@@ -169,6 +170,7 @@ public class SincronizarFragment extends Fragment {
             public void onClick(View v) {
                 String cadena="";
                 List resultado = new ArrayList();
+                /*
                 taccamiViewModel.findAllVehiculos().observe(getActivity(), new Observer<List<TaccamiEntity>>() {
                     @Override
                     public void onChanged(List<TaccamiEntity> taccamiEntities) {
@@ -177,11 +179,13 @@ public class SincronizarFragment extends Fragment {
                         }
                     }
                 });
+
+                 */
                 tplcprtViewModel.findTplcprtByMatricula("E0000BBB").observe(getActivity(), new Observer<List<TplcprtEntity>>() {
                     @Override
                     public void onChanged(List<TplcprtEntity> tplcprtEntities) {
                         for(int i=0;i<tplcprtEntities.size();i++){
-                            Log.d("tplcprt", tplcprtEntities.get(i).getCod_tag_cprt());
+                            Log.d("tplcprtTAG", tplcprtEntities.get(i).getCod_tag_cprt());
                         }
                     }
                 });
@@ -353,6 +357,7 @@ public class SincronizarFragment extends Fragment {
             String[] nextLine;
             while ((nextLine = reader.readNext()) != null) {
                 tplcprtViewModel.insertTplcprt(new TplcprtEntity(Integer.valueOf(nextLine[0]), nextLine[1], nextLine[2], Integer.valueOf(nextLine[3]), nextLine[4]));
+                Log.d("leertplcprt", nextLine[2]);
             }
         }catch (IOException e){
             e.printStackTrace();
