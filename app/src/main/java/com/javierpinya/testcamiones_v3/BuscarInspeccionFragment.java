@@ -2,6 +2,7 @@ package com.javierpinya.testcamiones_v3;
 
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +20,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import com.javierpinya.testcamiones_v3.Clases.InspeccionEntity;
 import com.javierpinya.testcamiones_v3.ViewModels.TaccamiViewModel;
 import com.javierpinya.testcamiones_v3.ViewModels.TaccatrViewModel;
 import com.javierpinya.testcamiones_v3.ViewModels.TaccondViewModel;
 import com.javierpinya.testcamiones_v3.ViewModels.TacprcoViewModel;
 import com.javierpinya.testcamiones_v3.ViewModels.TacsecoViewModel;
 import com.javierpinya.testcamiones_v3.ViewModels.TplcprtViewModel;
+
+import java.util.List;
 
 
 /**
@@ -40,6 +45,9 @@ public class BuscarInspeccionFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
 
     private String cond,insp,instalacion,primercomp, segundocomp;
+    private List<InspeccionEntity> listInspecciones;
+
+    private BuscarInspeccionAsync buscarInspeccionAsync;
 
 
 
@@ -66,7 +74,7 @@ public class BuscarInspeccionFragment extends Fragment {
         cisterna = view.findViewById(R.id.etSegundoComp);
         btnBuscarInspeccion = view.findViewById(R.id.btnBuscarInspeccion);
 
-        lanzarViewModel();
+        //lanzarViewModel();
 
         //RecyclerView
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_buscarinspeccion);
@@ -89,8 +97,8 @@ public class BuscarInspeccionFragment extends Fragment {
                 primercomp = tractora.getText().toString().trim();
                 segundocomp = cisterna.getText().toString().trim();
 
-
-
+                buscarInspeccionAsync = new BuscarInspeccionAsync();
+                buscarInspeccionAsync.execute();
 
             }
         });
@@ -98,8 +106,20 @@ public class BuscarInspeccionFragment extends Fragment {
         return view;
     }
 
-    private void lanzarViewModel() {
-        //InspeccionViewModel = ViewModelProviders.of(getActivity()).get(InspeccionViewModel.class);
+    private class BuscarInspeccionAsync extends AsyncTask<Void,Void, List<InspeccionEntity>>{
+
+        @Override
+        protected void onPostExecute(List<InspeccionEntity> inspeccionEntities) {
+            for(int i=0;i<1;i++){
+                Log.d("listInspecciones", inspeccionEntities.get(i).getAlbaran());
+            }
+        }
+
+        @Override
+        protected List<InspeccionEntity> doInBackground(Void... voids) {
+            listInspecciones = AppDatabase.getDatabase(getActivity()).inspeccionDao().findInspeccionByTRANSPIA2("I140","0022");
+            return listInspecciones;
+        }
     }
 
 

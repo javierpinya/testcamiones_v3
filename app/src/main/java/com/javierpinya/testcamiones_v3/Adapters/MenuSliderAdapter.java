@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.javierpinya.testcamiones_v3.ui.DashboardFragment;
-import com.javierpinya.testcamiones_v3.ui.PerfilFragment;
-import com.javierpinya.testcamiones_v3.ui.SincronizarFragment;
+import com.javierpinya.testcamiones_v3.ui.Menu.DashboardFragment;
+import com.javierpinya.testcamiones_v3.ui.Menu.PerfilFragment;
+import com.javierpinya.testcamiones_v3.ui.Menu.SincronizarFragment;
 
 
 public class MenuSliderAdapter extends FragmentPagerAdapter{

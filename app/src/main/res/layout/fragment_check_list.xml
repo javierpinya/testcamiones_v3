@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.NuevaInspeccion.CheckListFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/permiso_conducir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/permiso_conducir">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/adr_conductor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/adrcond">
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/itv_tractora"
+                android:text="@string/itvt">
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/itvcisterna"
+                android:text="@string/itvc">
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/adrtractora"
+                android:text="@string/adrt">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/adrcisterna"
+                android:text="@string/adrc">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ficha_seguridad"
+                android:text="@string/ficha_seguridad">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/transpondertractora"
+                android:text="@string/transpondert">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/transpondercisterna"
+                android:text="@string/transponderc">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_superficiesuperior"
+                android:text="@string/superficiesuperior">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_posicionvehiculo"
+                android:text="@string/posicionvehiculo">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_frenoestacionamiento"
+                android:text="@string/frenoestacionamiento">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_baterias"
+                android:text="@string/desconectadobaterias">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_apagallamas"
+                android:text="@string/apagallamas">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_movil"
+                android:text="@string/movil">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_interruptores"
+                android:text="@string/interruptoresemergencia">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_scully"
+                android:text="@string/scully">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_manguera_gases"
+                android:text="@string/recvap">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_purga"
+                android:text="@string/purga">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_ropa"
+                android:text="@string/ropa">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_tc2"
+                android:text="@string/tc2c">
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/montajetags"
+                android:text="@string/montajetagsok">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_bajadatags"
+                android:text="@string/bajadatags">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_lecturatagsisleta"
+                android:text="@string/lecturatagsok">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</FrameLayout>

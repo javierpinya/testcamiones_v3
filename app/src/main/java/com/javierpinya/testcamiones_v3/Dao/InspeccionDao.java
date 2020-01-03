@@ -71,6 +71,9 @@ public interface InspeccionDao {
     @Query("SELECT * FROM inspeccion WHERE instalacion LIKE :instalacion AND transportista LIKE :transportista")
     LiveData<List<InspeccionEntity>> findInspeccionByTRANSPIA(String instalacion,String transportista);
 
+    @Query("SELECT * FROM inspeccion WHERE instalacion LIKE :instalacion AND transportista LIKE :transportista")
+    List<InspeccionEntity> findInspeccionByTRANSPIA2(String instalacion,String transportista);
+
 
 
 

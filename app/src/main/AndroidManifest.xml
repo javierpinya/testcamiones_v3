@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CompartimentosActivity"></activity>
+        <activity android:name=".NuevaInspeccionActivity"></activity>
+        <activity android:name=".CompartimentosActivity" />
         <activity android:name=".ResultadoBuscarVehiculoActivity" />
         <activity android:name=".ResultadoInspeccionActivity" />
         <activity android:name=".BuscarInspeccionActivity" />
