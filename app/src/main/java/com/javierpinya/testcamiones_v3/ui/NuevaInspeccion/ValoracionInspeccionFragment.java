@@ -14,10 +14,10 @@ import com.javierpinya.testcamiones_v3.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FinalYFotosInspeccionFragment extends Fragment {
+public class ValoracionInspeccionFragment extends Fragment {
 
 
-    public FinalYFotosInspeccionFragment() {
+    public ValoracionInspeccionFragment() {
         // Required empty public constructor
     }
 
@@ -26,7 +26,7 @@ public class FinalYFotosInspeccionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_final_yfotos_inspeccion, container, false);
+        return inflater.inflate(R.layout.fragment_valoracion_inspeccion, container, false);
     }
 
 }

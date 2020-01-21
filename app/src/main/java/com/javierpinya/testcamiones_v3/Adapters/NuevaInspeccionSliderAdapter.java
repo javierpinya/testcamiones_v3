@@ -9,6 +9,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.javierpinya.testcamiones_v3.ui.NuevaInspeccion.CabeceraInspeccionFragment;
 import com.javierpinya.testcamiones_v3.ui.NuevaInspeccion.CheckListFragment;
+import com.javierpinya.testcamiones_v3.ui.NuevaInspeccion.CompartimentosInspeccionFragment;
+import com.javierpinya.testcamiones_v3.ui.NuevaInspeccion.FotosInspeccionFragment;
+import com.javierpinya.testcamiones_v3.ui.NuevaInspeccion.ValoracionInspeccionFragment;
 
 public class NuevaInspeccionSliderAdapter extends FragmentPagerAdapter {
 
@@ -18,7 +21,7 @@ public class NuevaInspeccionSliderAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 5;
     }
 
     @Override
@@ -31,6 +34,15 @@ public class NuevaInspeccionSliderAdapter extends FragmentPagerAdapter {
             case 1:
                 CheckListFragment checkListFragment = new CheckListFragment();
                 return checkListFragment;
+            case 2:
+                CompartimentosInspeccionFragment compartimentosInspeccionFragment = new CompartimentosInspeccionFragment();
+                return compartimentosInspeccionFragment;
+            case 3:
+                FotosInspeccionFragment fotosInspeccionFragment = new FotosInspeccionFragment();
+                return fotosInspeccionFragment;
+            case 4:
+                ValoracionInspeccionFragment valoracionInspeccionFragment = new ValoracionInspeccionFragment();
+                return valoracionInspeccionFragment;
         }
 
         return null;
@@ -44,7 +56,13 @@ public class NuevaInspeccionSliderAdapter extends FragmentPagerAdapter {
                 return "Cabecera";
             case 1:
                 return "CheckList";
+            case 2:
+                return "Compartimentos";
+            case 3:
+                return "Fotos";
+            case 4:
+                return "Valoración";
         }
-        return "0;";
+        return "0";
     }
 }

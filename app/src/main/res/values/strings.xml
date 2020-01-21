@@ -222,10 +222,10 @@
 
     <!-- Termistores y TAGS-->
 
-    <string name="tv_fechabloqueo">tv_fechabloqueo</string>
-    <string name="et_fechabloqueo">et_fechabloqueo</string>
-    <string name="tv_fecharevisado">tv_fecharevisado</string>
-    <string name="et_fecharevisado">et_fecharevisado</string>
+    <string name="tv_fechabloqueo">fechabloqueo</string>
+    <string name="et_fechabloqueo">fechabloqueo</string>
+    <string name="tv_fecharevisado">fecharevisado</string>
+    <string name="et_fecharevisado">fecharevisado</string>
     <string name="montajetagsok">MONTAJE TAGS OK</string>
     <string name="bajadatagsplanta">BAJADA TAGS PLANTA</string>
     <string name="lecturatagsok">LECTURA TAGS</string>

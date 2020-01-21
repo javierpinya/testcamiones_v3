@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.javierpinya.testcamiones_v3.BuscarInspeccionActivity;
 import com.javierpinya.testcamiones_v3.BuscarVehiculoActivity;
+import com.javierpinya.testcamiones_v3.NuevaInspeccionActivity;
 import com.javierpinya.testcamiones_v3.R;
 
 /**
@@ -59,6 +60,15 @@ public class DashboardFragment extends Fragment{
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(getContext(), BuscarInspeccionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        nuevaInspeccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getContext(), NuevaInspeccionActivity.class);
                 startActivity(intent);
             }
         });
